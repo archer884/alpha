@@ -1,8 +1,5 @@
-use crate::key::Key;
-use std::{error, result};
+use crate::{key::Key, Result};
 use structopt::StructOpt;
-
-type Result<T> = result::Result<T, Box<error::Error>>;
 
 #[derive(Debug, StructOpt)]
 #[structopt(name = "alpha", about = "Alphabet cipher implementation")]

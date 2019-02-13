@@ -1,6 +1,4 @@
-use std::{error, result};
-
-type Result<T> = result::Result<T, Box<error::Error>>;
+use crate::Result;
 
 static ALPHABET: &[u8] = b"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -14,10 +12,11 @@ impl Key {
         if key.is_empty() {
             Err("Invalid key")?;
         }
-        
+
         Ok(Self {
             idx: 0,
-            data: key.bytes()
+            data: key
+                .bytes()
                 .filter(|u| u.is_ascii_alphabetic())
                 .map(|u| u.to_ascii_uppercase())
                 .collect(),

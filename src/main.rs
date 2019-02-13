@@ -20,11 +20,17 @@ fn main() -> Result<()> {
 }
 
 fn encode(mut key: Key, content: &str) -> String {
-    content.bytes().filter_map(|u| key.encode(u.to_ascii_uppercase()).map(|u| u as char)).collect()
+    content
+        .bytes()
+        .filter_map(|u| key.encode(u.to_ascii_uppercase()).map(|u| u as char))
+        .collect()
 }
 
 fn decode(mut key: Key, content: &str) -> String {
-    content.bytes().filter_map(|u| key.decode(u.to_ascii_uppercase()).map(|u| u as char)).collect()
+    content
+        .bytes()
+        .filter_map(|u| key.decode(u.to_ascii_uppercase()).map(|u| u as char))
+        .collect()
 }
 
 fn read_content() -> Result<String> {
